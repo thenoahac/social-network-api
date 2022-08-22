@@ -11,7 +11,7 @@ module.exports = {
             .select('username')
             .then((user) => 
             !user
-                ? res.status(404).json({ message: 'No user with that ID'})
+                ? res.status(404).json({ message: 'Unable to find a user with that ID.'})
                 : res.json(user)
             )
             .catch((err) => res.status(500).json(err));
@@ -28,10 +28,10 @@ module.exports = {
         Thought.findOneAndDelete({ _id: req.params.userId })
             .then((user) => 
             !user
-                ? res.status(404).json({ message: "No user with that ID" })
+                ? res.status(404).json({ message: "Unable to find a user with that ID." })
                 : Thought.deleteMany({ _id: { $in: user.thoughts }})
             )
-            .then(() => res.json({ message: "User and thoughts deleted!" }))
+            .then(() => res.json({ message: "User and their thoughts deleted." }))
             .catch((err) => res.status(500).json(err));
     },
     updateUser(req, res) {
@@ -42,7 +42,7 @@ module.exports = {
         )
             .then((user) => 
             !user
-                ? res.status(404).json({ message: 'No user with this ID' })
+                ? res.status(404).json({ message: 'Unable to find a user with this ID.' })
                 : res.json(user)
             )
             .catch((err) => res.status(500).json(err));
@@ -55,7 +55,7 @@ module.exports = {
         ) 
         .then((user) =>
              !user
-                 ? res.status(404).json({ msg: 'No user with this ID' }) 
+                 ? res.status(404).json({ msg: 'Unable to find a user with this ID.' }) 
                  : res.json(user)
         )
         .catch((err) => res.status(500).json(err))
@@ -68,7 +68,7 @@ module.exports = {
          )
          .then((user) =>
              !user
-                 ? res.status(404).json({ msg: "No friend with this ID" })
+                 ? res.status(404).json({ msg: "Unable to find a friend with this ID." })
                  : res.json(user)
          )
          .catch((err) => res.status(500).json(err))
